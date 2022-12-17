@@ -139,5 +139,5 @@ def choose_enemy():
         return redirect(url_for("start_fight"), code=302)
 
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()

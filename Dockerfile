@@ -1,6 +1,12 @@
-FROM python:3.8.5
+FROM python:3.10
 
 WORKDIR /code
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-COPY help .
+RUN pip install gunicorn
+COPY data data
+COPY templates templates
+COPY . .
+CMD gunicorn wsgi:app -b 0.0.0.0:80
+
+

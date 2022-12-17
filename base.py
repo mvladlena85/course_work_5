@@ -1,8 +1,10 @@
+from typing import Dict
+
 from unit import BaseUnit
 
 
 class BaseSingleton(type):
-    _instances = {}
+    _instances: Dict[type, type] = {}
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
@@ -25,8 +27,6 @@ class Arena(metaclass=BaseSingleton):
         self.player = player
         self.enemy = enemy
         self.game_is_running = True
-
-
 
     def _check_players_hp(self):
         # TODO ПРОВЕРКА ЗДОРОВЬЯ ИГРОКА И ВРАГА

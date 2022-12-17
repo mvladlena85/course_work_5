@@ -17,10 +17,10 @@ class BaseUnit(ABC):
         """
         self.name = name
         self.unit_class = unit_class
-        self.hp = unit_class.max_health
-        self.stamina = unit_class.max_stamina
-        self.weapon = None
-        self.armor = None
+        self.hp: float = unit_class.max_health
+        self.stamina: float = unit_class.max_stamina
+        self.weapon: Optional[Weapon] = None
+        self.armor: Optional[Armor] = None
         self._is_skill_used = False
 
     @property
@@ -65,7 +65,7 @@ class BaseUnit(ABC):
         target.get_damage(damage)
         return damage
 
-    def get_damage(self, damage: int) -> Optional[int]:
+    def get_damage(self, damage: float) -> Optional[float]:
         # TODO получение урона целью
         #      присваиваем новое значение для аттрибута self.hp
         if damage > 0:
